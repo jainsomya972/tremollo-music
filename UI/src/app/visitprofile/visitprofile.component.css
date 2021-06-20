@@ -1,0 +1,92 @@
+.avatar{
+    border-radius: 50%;
+    border: 1px solid #e91e63;
+    height: 90px;
+    width: 90px;
+    padding: 3px;
+}
+.userName{
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 0.07px;
+    text-align: center;
+    color: #ffffff;
+}
+.name{
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 0.83px;
+    text-align: start;
+    color: #ffffff; 
+}
+.talents
+{
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 0.59px;
+    text-align: start;
+    color: #b8b8b8;
+}
+.label{
+    font-weight: lighter;
+    font-size: 0.8em;
+    line-height: 0.5;
+}
+
+  .btn-half{
+    background: #121212;
+    border-radius: 20px;
+    border-width: 0px;
+    opacity: 1;
+    color: white;
+    width: 40%;
+    height: 42px;
+    margin-top: 10px;
+    border: solid 1px #e43a3a;
+}
+.btn-notfollow{
+    background:#e43a3a;
+    border-radius: 20px;
+    border-width: 0px;
+    opacity: 1;
+    color: white;
+    width: 40%;
+    height: 42px;
+    margin-top: 10px;
+    border: solid 1px #121212;
+}
+
+hr{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.material-icons
+{
+    font-size: 16px;
+}
+
+.bio
+{
+    font-size: 14px;
+    font-weight: lighter;
+    letter-spacing: 0.4px;
+}
+
+.poster{
+    width: 90px !important;
+    height: 60px !important;
+    border-radius: 0px !important;
+}

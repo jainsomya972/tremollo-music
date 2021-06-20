@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+.btn-gradient{
+    background: transparent linear-gradient(143deg, #E43A3A 0%, #E20074 100%, #000000 100%) 0% 0% no-repeat padding-box;
+    border-radius: 24px;
+    border-width: 0px;
+    opacity: 1;
+    color: white;
+
+    width: 100%;
+    height: 48px;
+}
+
+/* input,
+textarea,
+select {
+  background: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid red;
+} */
+
+.center {
+  text-align: center;
+}
+
+.box{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.fill{
+  flex: 5 1 auto;
+}
+
+.m-top-5{
+  margin-top: 5px;
+}
+
+.m-left-5{
+  margin-left: 5px;
+}
+
+.m-right-5{
+  margin-right: 5px;
+}
+
+.m-left-20{
+  margin-left: 20px;
+}
+
+.p-left-20{
+  padding-left: 20px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.accent-color{
+  color: #e91e63 !important;
+}
+
+.accent-color-light{
+  color: #ff6090 !important;
+}
+
+.bg-color{
+  background-color: #1e1e1e;
+}
+
+.bg-color-dark{
+  background-color: #121212 !important;
+}
+
+/* body{
+  overflow-y: hidden;
+} */
+
+.vscroll{
+  overflow-y: scroll;
+}
+html, body { height: 100%; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #121212 !important;
+  color: white !important;
+}
+
+*:focus {
+  outline: none !important;
+  border: 0 !important;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 10000;
+}
+
+/* material customisations */
+
+.mat-drawer-container {
+  background: #121212;
+}
+
+.mat-card,.mat-expansion-panel {
+  background: #1e1e1e !important;
+}
+
+.title{
+  margin-bottom: 12px !important;
+  font-size: 1.5em !important;
+  font-weight: 100 !important;
+}
+.snack-bar{
+  background-color: #b0003a  !important;
+  color: white !important;
+}

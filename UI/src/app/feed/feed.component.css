@@ -1,0 +1,33 @@
+.feed-item{
+    padding: 15px 0px 15px 0px;
+}
+
+.avatar{
+    border-radius: 50%;
+    /* border: 2px solid; */
+    height: 40px;
+    width: 40px;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.caption{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+td{
+    padding-right: 15px;
+}
+
+.fan-btn {
+    height: max-content;
+    position: absolute;
+    right: 15px;
+}
+
+video {
+    max-height: 60vh;
+}

@@ -1,0 +1,80 @@
+<div class="container bg-color text-white" style="height: 140vh;">
+    <br>
+    <br>
+    <br>
+    <h2 class="text-light" style="font-weight: 100;">Edit Profile</h2>
+    <p class="text-light">PERSONAL DETAILS</p>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">account_box</i>
+        </div>
+        <div class="col">
+            <mat-form-field class="input" >
+            <input matInput placeholder="First Name" type="text" [(ngModel)]="User.firstName" />
+            </mat-form-field>
+        </div>
+        <!-- <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">email</i>
+        </div> -->
+        <div class="col">
+            <mat-form-field class="input" style="margin-left: 34px;width: 91%;">
+                <input matInput placeholder="Last Name" type="text" [(ngModel)]="User.lastName" />
+            </mat-form-field>
+            <!-- <input placeholder="Last Name" type="text" [(ngModel)]="User.lastName" /> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" >date_range</i>
+        </div>
+        <div class="col">
+            <!-- <mat-form-field class="input"> -->
+                <input placeholder="Date of birth" matInput [matDatepicker]="picker" (dateChange)="dateAdapter($event)" (click)="picker.open()" />
+            <!-- </mat-form-field> -->
+                <mat-datepicker #picker ></mat-datepicker>
+            <!-- <input placeholder="Date of birth" ngbDatepicker #d="ngbDatepicker" (click)="d.open()" type="text" (dateSelect)="dateAdapter($event)"/> -->
+        </div>
+    </div>
+    <br>
+    <div class="row center">
+        <div class="col">
+            <img [class]="User.gender=='F'?'border-select':''" src="assets/image/female-profile-96.png" (click)="User.gender='F'"/>
+        </div>
+        <div class="col">
+            <img [class]="User.gender=='M'?'border-select':''" src="assets/image/male-user-96.png" (click)="User.gender='M'"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" >info</i>
+        </div>
+        <div class="col">
+            <textarea placeholder="About" style="color: white;" [(ngModel)]="User.about"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;" >fiber_smart_record</i>
+        </div>
+        <div class="col">
+            <mat-form-field class = "input">
+            <mat-label>Your best fit</mat-label>
+            <mat-select [(ngModel)]="User.type" >
+                <mat-option value="0" class="text-accent">Listener</mat-option>
+                <mat-option value="1" class="text-accent">Guitarist</mat-option>
+                <mat-option value="2" class="text-accent">Pianist</mat-option>
+                <mat-option value="3" class="text-accent">Drummer</mat-option>
+                <mat-option value="4" class="text-accent">Singer</mat-option>
+                <mat-option value="5" class="text-accent">Rapper</mat-option>
+                <mat-option value="6" class="text-accent">Composer</mat-option>
+                <mat-option value="7" class="text-accent">Lyricist</mat-option>
+                <mat-option value="8" class="text-accent">Disco Jockie</mat-option>
+                <mat-option value="9" class="text-accent">Others</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <br>
+    <button class="btn-gradient" (click)="editClick()">Save</button>
+    <button class="btn-half" routerLink="/profile">Cancel</button>
+</div>

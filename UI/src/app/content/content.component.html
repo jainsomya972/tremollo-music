@@ -1,0 +1,93 @@
+<br><br><br>
+<mat-card class="m-top-5">
+    <mat-card-header>
+    <div mat-card-avatar><img class="avatar" [src]="content.pageAvatar!=null?(s3link + content.pageAvatar):'https://img.icons8.com/color/96/000000/test-account.png'"></div>
+    <mat-card-title (click) = "navTouser(content.userId)">
+        {{content.username}}
+    </mat-card-title>
+    <mat-card-subtitle>
+        {{content.dateUpload | timeago:true}}
+    </mat-card-subtitle>
+    <button mat-button class="fan-btn" [color]="content.isFollowedByUser?'primary':'accent'" (click)="followClick(content.userId,content.isFollowedByUser)">
+        {{content.isFollowedByUser?"You're a fan!":"Be a fan!"}}
+    </button>
+    </mat-card-header>
+    <mat-card-content></mat-card-content>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+    <p class="title">{{content.title}}</p>
+    <p>{{content.caption}}</p>
+    </mat-card-content>
+    <video mat-card-image [poster]="content.thumbnailLink!=null?s3link+content.thumbnailLink:'assets/image/thumbnail.jpg'" [src]="s3link+content.mediaLink" preload="none" controls></video>
+    <mat-card-content>
+        <!-- <table>
+            <tr>
+                <td><i [class]="'material-icons '+(!content.isLikedByUser?'text-secondary':'accent-color')" (click)="likeClick(content.contentId,content.isLikedByUser)">thumb_up</i></td>
+                <td><p>{{content.likes}}</p></td>
+                <td><i class="material-icons text-secondary">visibility</i></td>
+                <td><p>245</p></td>
+                <td><i class="material-icons text-secondary" (click)="openPlaylistBottomSheet(content.contentId)">save</i></td>
+                <td><i [class]="'material-icons '+(!content.isFollowedByUser?'text-secondary':'accent-color')" (click)="followClick(content.userId,content.isFollowedByUser)">{{content.isFollowedByUser?'group':'group_add'}}</i></td>
+            </tr>
+        </table> -->
+        <button mat-icon-button>
+            <mat-icon [class]="'material-icons '+(!content.isLikedByUser?'text-secondary':'accent-color')" (click)="likeClick(content.contentId,content.isLikedByUser)">favorite</mat-icon>
+            <span style="margin: 5px;">{{content.likes}}</span>
+        </button>
+        <button mat-icon-button>
+            <mat-icon class="text-secondary" (click)="openPlaylistBottomSheet(content.contentId)">save</mat-icon>
+        </button>
+        <button [cdkCopyToClipboard] = "'tremollo.co/content/'+temp(content.contentId)" (click)="openDialog(content.contentId)" mat-icon-button><mat-icon class="text-secondary">share</mat-icon></button>
+    </mat-card-content>
+</mat-card>
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+
+    <mat-tab label="Compliments">
+        <mat-list >
+            <mat-list-item>
+                <img mat-list-avatar [src]="user.avatarLink!=null?(s3link + user.avatarLink):'https://img.icons8.com/color/96/000000/test-account.png'">
+                <mat-form-field style="margin-left: 20px;width: 60vw;" class="input">
+                    <input matInput [(ngModel)] = 'comment.text' placeholder="Write a compliment" />
+                </mat-form-field>
+                <button mat-button color = "primary" style="position: absolute;right: 10px;" (click)="postComment()"
+                [disabled] = "comment.text==''">
+                    Post
+                </button>
+            </mat-list-item>
+            <mat-list-item *ngIf="comments.length==0">No compliments yet</mat-list-item>
+            <!-- <mat-list-item [routerLink]="'/user/'+item.userId" *ngFor="let item of comments;let i = index">
+                <img mat-list-avatar [src]="item.avatarLink!=null?(s3link + item.avatarLink):'https://img.icons8.com/color/96/000000/test-account.png'">
+                <p mat-line>{{item.username}}</p>
+                <p style="color: #858383;" mat-line>{{item.dateCreated | date:'MMM dd, hh:mm a'}}</p>
+                <p style="color: #b8b8b8;" mat-line>{{item.text}}</p>
+            </mat-list-item> -->
+            
+        </mat-list>
+        <br>
+        <div class="row" *ngFor="let item of comments;let i = index">
+        <img class="col-2" style="margin-left: 14px;" mat-card-avatar [src]="item.avatarLink!=null?(s3link + item.avatarLink):'https://img.icons8.com/color/96/000000/test-account.png'">
+        <mat-card class="comment-card">
+            <mat-card-header>
+                <mat-card-title style="font-size: 16px;" (click)="navTouser(item.userId)">
+                    {{item.username}} <span style="color: #858383;" mat-line>{{item.dateCreated | date:'MMM dd, hh:mm a'}}</span>
+                </mat-card-title>
+                <mat-card-subtitle style="font-size: 16px;font-weight: 100; max-width: 66vw;margin: 0px;">
+                    {{item.text}}
+                </mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+        <!-- <div class="col-1"></div> -->
+        </div>
+    </mat-tab>
+    <mat-tab label="Likes">
+        <mat-list>
+            <mat-list-item *ngIf="likers.length==0">No likes yet</mat-list-item>
+            <mat-list-item (click)="navTouser(item.userId)" *ngFor="let item of likers;let i = index">
+                <img mat-list-avatar [src]="item.avatarLink!=null?(s3link + item.avatarLink):'https://img.icons8.com/color/96/000000/test-account.png'">
+                <h3 mat-line>{{item.username}}</h3>
+                <p style="color: #b8b8b8;" mat-line>{{item.firstName}} {{item.lastName}}</p>
+            </mat-list-item>
+        </mat-list>
+    </mat-tab>
+</mat-tab-group>
+<br><br><br>

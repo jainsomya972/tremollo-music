@@ -1,0 +1,14 @@
+.large{
+    font-size: 2rem;
+}
+
+.icon-set {
+    margin-bottom: 0px;
+    font-size: smaller;
+    margin-top: -8px;
+}
+
+.navbar {
+    border-top: solid 0.5px #e91e63;
+    background: #121212dd;
+}

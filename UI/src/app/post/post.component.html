@@ -1,0 +1,72 @@
+<div class="container" >
+    <br><br>
+    <br><br>
+<p>File size must be less than 91 MB</p>
+<input class="file-input" type="file" accept="video/*" (change)="onFileSelect($event)"/>
+<!-- <div class="center">
+    <h1 *ngIf="uploadPercentage" class="accent-color">{{uploadPercentage}}%</h1>
+</div> -->
+<div *ngIf="fileUploadResponse">
+    <br>
+    <p>Select thumbnail</p>
+    <div class="flex">
+        <div *ngFor="let thumbnail of thumbnails" class="small-image">
+            <img *ngIf="thumbnail!=''" [src]="s3link+thumbnail" (click)="switchThumbnail(thumbnail)">
+        </div>
+    </div>
+    <br>
+    <img [src]="s3link+this.model.thumbnailLink" style="width: 100%;">
+</div>
+<br>
+<div class="row">
+    <div class="col-1">
+        <i class="material-icons accent-color" style="margin-top: 10px;">email</i>
+    </div>
+    <div class="col">
+        <mat-form-field class="input">
+        <input matInput placeholder="Title" type="text" [(ngModel)]="model.title" />
+    </mat-form-field>
+    </div>
+</div>
+<div class="row spacing">
+    <div class="col-1">
+        <i class="material-icons accent-color" style="margin-top: 10px;">email</i>
+    </div>
+    <div class="col">
+        <mat-form-field class="input">
+        <textarea matInput placeholder="Caption" [(ngModel)]="model.caption" ></textarea>
+    </mat-form-field>
+    </div>
+</div>
+<div class="row">
+    <div class="col-1">
+        <i class="material-icons accent-color" style="margin-top: 10px;">email</i>
+    </div>
+    <div class="col">
+        <mat-form-field class="input">
+            <mat-chip-list  #chipList >
+              <mat-chip selected color="primary" *ngFor="let Tag of Tags" [selectable]="selectable"
+                       [removable]="removable" (removed)="remove(Tag)">
+                       {{Tag}}
+                <mat-icon  matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="Add Tags"
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+          </mat-form-field>
+    </div>
+    <div class="col-2">
+        <button (click) = "add($event)" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
+            <mat-icon>add</mat-icon>
+          </button>
+    </div>
+</div>
+<br>
+<button class="btn-gradient spacing" (click)="contentUpload()">Upload</button>
+<br><br><br><br>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-scale-party" [fullScreen] = "true"><p style="color: white" > {{loadMessage}} </p></ngx-spinner>
+

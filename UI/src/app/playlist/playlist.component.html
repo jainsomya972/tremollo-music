@@ -1,0 +1,107 @@
+<br><br><br>
+<div>
+    <!-- <div *ngIf="nowPlaying">
+    <p>{{nowPlaying.title}}</p>
+    <p>{{nowPlaying.caption}}</p>
+    <video width="100%" controls autoplay>
+        <source [src]="s3link+nowPlaying.mediaLink" />
+    </video>
+    </div> -->
+
+    <mat-card class="m-top-5" *ngIf="nowPlaying">
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <mat-card-content>
+        <h2 *ngIf="nowPlaying.title">{{nowPlaying.title}}</h2>
+        <p *ngIf="nowPlaying.caption">{{nowPlaying.caption}}</p>
+        </mat-card-content>
+        <video #player mat-card-image [src]="s3link+nowPlaying.mediaLink" controls autoplay></video>
+    </mat-card>
+
+    <div class="vscroll">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <table>
+                        <tr>
+                            <td><i class="material-icons">add</i></td>
+                            <td><p>Create Playlist</p></td>
+                        </tr>
+                    </table>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field class="input">
+                <input matInput type="text" placeholder="Playlist Name" #name/>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;
+            <button mat-mini-fab color="primary" (click)="createPlaylist(name.value)">
+                <mat-icon>check</mat-icon>
+            </button>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel  *ngFor="let item of userPlaylists">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <table>
+                        <tr>
+                            <td><img mat-list-avatar class="poster" [src]="item.contents.length>0 && item.contents[0].thumbnailLink?(s3link + item.contents[0].thumbnailLink):'assets/image/thumbnail.jpg'"></td>
+                            <td><p>{{item.name}}</p><p class="text-secondary">{{item.contents.length}} videos</p></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <button mat-icon-button  style="position: absolute; right: 12%;" ><mat-icon class="text-secondary" (click)="deletePlaylist(item.playlistId)">delete</mat-icon></button>
+                        <!-- <button mat-icon-button><mat-icon class="text-secondary">edit</mat-icon></button> -->
+                        <!-- <hr> -->
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>                
+                <div class="item" *ngFor="let content of item.contents" (click)="playItem(content)">
+                    <table>
+                        <tr>
+                    <td><img mat-list-avatar class="poster" [src]="content.thumbnailLink!=null?(s3link + content.thumbnailLink):'assets/image/thumbnail.jpg'"></td>
+                    <td><span *ngIf="content.title">{{content.title}}<br></span></td>
+                </tr>
+                </table>
+                    <!-- <span *ngIf="content.caption">{{content.caption}}</span> -->
+                    <!-- <hr> -->
+                </div>
+            </ng-template>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- <ngb-accordion [closeOthers]="true">
+        <ngb-panel>
+            <ng-template ngbPanelTitle>
+                <i class="material-icons">add</i> Create Playlist
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <input type="text" #name/>
+                <button (click)="createPlaylist(name.value)">Create</button>
+            </ng-template>
+        </ngb-panel>
+
+        <ngb-panel *ngFor="let item of userPlaylists">
+            <ng-template ngbPanelTitle>
+                <table>
+                    <tr>
+                        <td><i class="material-icons">view_headline</i></td>
+                        <td>
+                            {{item.name}} - {{item.contents.length}} videos
+                        </td>
+                    </tr>
+                </table>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <div *ngFor="let content of item.contents" (click)="nowPlaying = undefined; nowPlaying = content;">
+                        <span *ngIf="content.title">{{content.title}}<br></span>
+                        <span *ngIf="content.caption">{{content.caption}}</span>
+                        <hr>
+                </div>
+            </ng-template>
+        </ngb-panel>
+
+    </ngb-accordion> -->
+</div>
+</div>
+<br><br><br>

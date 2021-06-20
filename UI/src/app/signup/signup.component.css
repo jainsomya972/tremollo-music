@@ -1,0 +1,20 @@
+.border-select{
+    border-radius: 50%;
+    border: 3px solid #dc3545;
+}
+
+textarea,
+select {
+  background: none;
+  font-size: 18px;
+  color: white;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  /* border-bottom: 1px solid red; */
+}
+.input{
+  width: 100%;
+}

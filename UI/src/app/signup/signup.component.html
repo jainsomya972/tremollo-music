@@ -1,0 +1,107 @@
+<div class="container bg-color text-white" style="height: 140vh;">
+    <br>
+    <h2 class="text-light" style="font-weight: 100;">Sign Up</h2>
+    <br>
+    <p class="text-light">ACCOUNT DETAILS</p>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">account_box</i>
+        </div>
+        <div class="col">
+            <mat-form-field class="input" >
+                <input matInput placeholder="Username" type="text" [(ngModel)]="model.username" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">email</i>
+        </div>
+        <div class="col">
+            <mat-form-field class="input" >
+                <input matInput placeholder="Email" type="email" [(ngModel)]="model.email" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">lock</i>
+        </div>
+        <div class="col">
+            <mat-form-field class="input" >
+                <input matInput placeholder="Password" type="password" [(ngModel)]="model.password" />
+            </mat-form-field>
+        </div>
+    </div>
+    <br>
+    <p class="text-light">PERSONAL DETAILS</p>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">account_box</i>
+        </div>
+        <div class="col">
+            <mat-form-field class="input" >
+                <input matInput placeholder="First Name" type="text" [(ngModel)]="model.firstName" />
+            </mat-form-field>
+        </div>
+        <!-- <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">email</i>
+        </div> -->
+        <div class="col">
+            <mat-form-field class="input" style="width: 91%;margin-left: 33px;">
+                <input matInput placeholder="Last Name" type="text" [(ngModel)]="model.lastName" />
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" >date_range</i>
+        </div>
+        <div class="col">
+            <input placeholder="Date of birth" matInput [matDatepicker]="picker" (dateChange)="dateAdapter($event)" (click)="picker.open()" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker ></mat-datepicker>
+        </div>
+    </div>
+    <br>
+    <div class="row center">
+        <div class="col">
+            <img [class]="model.gender=='F'?'border-select':''" src="assets/image/female-profile-96.png" (click)="model.gender='F'"/>
+        </div>
+        <div class="col">
+            <img [class]="model.gender=='M'?'border-select':''" src="assets/image/male-user-96.png" (click)="model.gender='M'"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">info</i>
+        </div>
+        <div class="col">
+            <textarea placeholder="About" [(ngModel)]="model.about"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="material-icons accent-color" style="margin-top: 10px;">fiber_smart_record</i>
+        </div>
+        <div class="col">
+            <mat-form-field class = "input">
+            <mat-label>Your best fit</mat-label>
+            <mat-select [(ngModel)]="model.type">
+                <mat-option value="0" class="text-accent">Listener</mat-option>
+                <mat-option value="1" class="text-accent">Guitarist</mat-option>
+                <mat-option value="2" class="text-accent">Pianist</mat-option>
+                <mat-option value="3" class="text-accent">Drummer</mat-option>
+                <mat-option value="4" class="text-accent">Singer</mat-option>
+                <mat-option value="5" class="text-accent">Rapper</mat-option>
+                <mat-option value="6" class="text-accent">Composer</mat-option>
+                <mat-option value="7" class="text-accent">Lyricist</mat-option>
+                <mat-option value="8" class="text-accent">Disco Jockie</mat-option>
+                <mat-option value="9" class="text-accent">Others</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <br>
+    <button class="btn-gradient" (click)="signupClick()">Sign Up</button>
+</div>

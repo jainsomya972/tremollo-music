@@ -1,0 +1,29 @@
+.input{
+    width: 100%;
+}
+
+.avatar{
+    border-radius: 50%;
+    /* border: 2px solid; */
+    height: 40px;
+    width: 40px;
+}
+
+.poster{
+    width: 90px !important;
+    height: 60px !important;
+    border-radius: 0px !important;
+}
+
+mat-card{
+    padding: 16px 0px 16px 0px !important;
+}
+
+p{
+    font-weight: 100 !important;
+}
+
+mat-list-item{
+    height: fit-content !important;
+    margin: 8px 0px 8px 0px !important;
+}

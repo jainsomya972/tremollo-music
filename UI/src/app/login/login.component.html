@@ -1,0 +1,72 @@
+<div *ngIf = "!isLandingPage" class="container center" style="height: 100vh;background-size: cover;"
+                [ngStyle]="{backgroundImage:'url(assets/image/Carousel_mobile_background_2.png)'}">
+
+<!-- <h1 class="logo">tremollo</h1> -->
+<img src="assets/image/logo.svg" class="logo">
+<p class = "headline">A social media for Musicians</p>
+<br><br>
+<br>
+<p *ngIf="error">Incorrect credentials, please try again</p>
+
+<div class="row" style="margin-top: 15px;">
+    <div class="col-1">
+        <i class="material-icons accent-color" style="margin-top: 10px;">email</i>
+    </div>
+    <div class="col">
+        <mat-form-field class="input">
+            <input matInput placeholder="Email" type="email" [(ngModel)]="model.email" />
+        </mat-form-field>  
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-1">
+        <i class="material-icons accent-color" style="margin-top: 10px;">lock</i>
+    </div>
+    <div class="col">
+        <mat-form-field class="input">
+            <input matInput placeholder="Password" type="password" [(ngModel)]="model.password" />
+        </mat-form-field>  
+    </div>
+</div>
+<br>
+<!-- <p>New here ? <a routerLink='/signup'>Signup now</a></p> -->
+<br>
+    <div class="bottombtn">
+        <button class="btn-gradient" style="width: 85%;" (click)="loginClick()">
+            Login
+        </button>
+        <button class="btn-sgnup btn-gradient"  routerLink='/signup'>
+            Create New Account
+        </button>
+        <p style="margin-top: 20px;">Made with <mat-icon style="color: #e91e63;vertical-align: middle;">favorite</mat-icon> & Pride in india </p>
+    </div>
+</div>
+
+<div *ngIf = "isLandingPage" class="container center" style="height: 100vh;background-size: cover;"
+                 [ngStyle]="{backgroundImage:'url(assets/image/Carousel_mobile_background_2.png)'}">
+    <!-- <br>
+    <br>
+    <br> -->
+    <div>
+        <img src="assets/image/Logo SVG.svg" class = "logo"/>
+        <p class = "headline">A social media for Musicians</p>
+    </div>
+    <ngb-carousel class="carousal" [showNavigationIndicators]=false [showNavigationArrows]=false>
+        <ng-template ngbSlide *ngFor="let item of carousal">
+            <div>
+                <img [src]="item.image" height="200px"/>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+    <div class="bottombtn">
+        <button class="btn-gradient" style="width: 85%;"  (click)="switchlanding()">
+            Sign In
+        </button>
+        <button class="btn-sgnup btn-gradient"  routerLink='/signup'>
+            Create New Account
+        </button>
+        <p style="margin-top: 20px;">Made with <mat-icon style="color: #e91e63;vertical-align: middle;">favorite</mat-icon> & Pride in india </p>
+    </div>
+    
+</div>

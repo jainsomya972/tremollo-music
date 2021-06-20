@@ -1,0 +1,53 @@
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="input">
+                <input matInput type="search" placeholder="Enter search keyword" (keypress)="searchSubmit(search.value,$event)" #search/>
+            </mat-form-field>
+        </div>
+        <div class="col-2">
+            <button mat-icon-button color="accent" (click)="search.value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+    <!-- <h5>USERS</h5>
+    <p *ngIf="userSearchResult.length==0">No users found</p>
+    <mat-card *ngFor="let item of userSearchResult; let i = index">
+        <mat-card-header>
+            <div mat-card-avatar><img class="avatar" [src]="item.pageAvatar!=null?(s3link + item.pageAvatar):'https://img.icons8.com/color/96/000000/test-account.png'"></div>
+          <mat-card-title>{{item.username}}</mat-card-title>
+          <mat-card-subtitle>{{item.firstName}} {{item.lastName}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <h5>CONTENTS</h5>
+    <p *ngIf="contentSearchResult.length==0">No content found</p> -->
+
+    <mat-list *ngIf="ifResult">
+        <mat-card>
+            <div matSubheader>USERS</div>
+            <mat-list-item *ngIf="userSearchResult.length==0">No users found</mat-list-item>
+            <mat-list-item *ngFor="let item of userSearchResult;let i = index" (click)="visitUser(item.userId)">
+                <img mat-list-avatar [src]="item.pageAvatar!=null?(s3link + item.pageAvatar):'https://img.icons8.com/color/96/000000/test-account.png'">
+                <h3 mat-line>{{item.username}}</h3>
+                <p mat-line>{{item.firstName}} {{item.lastName}}</p>
+            </mat-list-item>
+        </mat-card>
+        <hr>
+        <mat-card>
+            <div matSubheader>CONTENTS</div>
+            
+            <mat-list-item *ngIf="contentSearchResult.length==0">No content found</mat-list-item>
+            <mat-list-item (click)="navTocontent(item.contentId)"  *ngFor="let item of contentSearchResult;let i = index">
+                <img mat-list-avatar class="poster" [src]="item.thumbnailLink!=null?(s3link + item.thumbnailLink):'assets/image/thumbnail.jpg'">
+                <h3 mat-line>{{item.title}}</h3>
+                <p style="white-space: normal;" mat-line>{{item.caption}}</p>
+            </mat-list-item>
+        </mat-card>
+    </mat-list>
+    <br><br>
+    <p style="font-family: Roboto; font-size: 42px;line-height: 48px;">Collections <br> Top picks <br> Charts</p>
+    <p style="font-family: Roboto; font-size: 42px;font-weight: 400 !important;">coming soon..!!</p>
+</div>
+    <br><br><br>

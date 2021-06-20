@@ -1,0 +1,24 @@
+<nav class="navbar">
+    <!-- Navbar content -->
+    <div class="center" routerLink="/feed">
+        <i [class]="'material-icons ' + (path=='/feed'?'accent-color':'text-light')" >home</i>
+        <p [class]="'icon-set ' + (path=='/feed'?'accent-color':'text-light')">Home</p>
+    </div>
+    <div class="center" routerLink="/search">
+        <i [class]="'material-icons ' + (path=='/search'?'accent-color':'text-light')">search</i>
+        <p [class]="'icon-set ' + (path=='/search'?'accent-color':'text-light')">Search</p>
+    </div>
+    <div class="center" routerLink="/upload">
+        <i [class]="'material-icons ' + (path=='/upload'?'accent-color':'text-light')">add_circle</i>
+        <p [class]="'icon-set ' + (path=='/upload'?'accent-color':'text-light')">Upload</p>
+    </div>
+    <div class="center" routerLink="/playlists">
+        <i [class]="'material-icons ' + (path=='/playlists'?'accent-color':'text-light')">queue_music</i>
+        <p [class]="'icon-set ' + (path=='/playlists'?'accent-color':'text-light')">Playlist</p>
+    </div>
+    <div class="center" routerLink="/profile">
+        <i [class]="'material-icons ' + (path=='/profile'?'accent-color':'text-light')">account_circle</i>
+        <p [class]="'icon-set ' + (path=='/profile'?'accent-color':'text-light')">Profile</p>
+    </div>
+
+</nav>

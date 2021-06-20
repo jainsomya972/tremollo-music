@@ -1,0 +1,63 @@
+<h1>test</h1>
+<div
+      infiniteScroll
+      [infiniteScrollDistance]="3"
+      [infiniteScrollThrottle]="800"
+      (scrolled)="onScrolldown()"
+>
+<mat-card class="m-top-5" *ngFor="let item of itemList; let i = index">
+    <mat-card-header>
+    <div mat-card-avatar><img class="avatar" [src]="item.pageAvatar!=null?(s3link + item.pageAvatar):'https://img.icons8.com/color/96/000000/test-account.png'"></div>
+    <mat-card-title (click)="navUser(item.userId)">
+        {{item.username}}
+    </mat-card-title>
+    <mat-card-subtitle>
+        {{item.dateUpload | timeago:true}}
+    </mat-card-subtitle>
+    <button mat-button class="fan-btn" [color]="item.isFollowedByUser?'primary':'accent'" (click)="followClick(item.userId,item.isFollowedByUser,i)">
+        {{item.isFollowedByUser?"You're a fan!":"Be a fan!"}}
+    </button>
+    </mat-card-header>
+    <mat-card-content></mat-card-content>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+    <p class="title">{{item.title}}</p>
+    <p>{{item.caption}}</p>
+    </mat-card-content>   
+    <video mat-card-image [id] = "'video'+i" (play) = "onplay('video'+i)" [poster]="item.thumbnailLink!=null?s3link+item.thumbnailLink:'assets/image/thumbnail.jpg'" [src]="s3link+item.mediaLink" preload="none" controls></video>
+    <mat-card-content>
+        <!-- <table>
+            <tr>
+                <td><i [class]="'material-icons '+(!item.isLikedByUser?'text-secondary':'accent-color')" (click)="likeClick(item.contentId,item.isLikedByUser,i)">thumb_up</i></td>
+                <td><p>{{item.likes}}</p></td>
+                <td><i class="material-icons text-secondary">visibility</i></td>
+                <td><p>245</p></td>
+                <td><i class="material-icons text-secondary" (click)="openPlaylistBottomSheet(item.contentId)">save</i></td>
+                <td><i class="material-icons text-secondary" [routerLink]="'/content/'+item.contentId" >open_in_new</i></td> -->
+                <button mat-icon-button>
+                    <mat-icon [class]="(!item.isLikedByUser?'text-secondary':'accent-color')" (click)="likeClick(item.contentId,item.isLikedByUser,i)">favorite</mat-icon>
+                    <span style="margin: 5px;">{{item.likes}}</span>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon class="text-secondary" (click)="openPlaylistBottomSheet(item.contentId)">save</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon class="text-secondary" (click)="navTocontent(item.contentId)">open_in_new</mat-icon>
+                </button>
+                <button (click)="openDialog(item.contentId)" [cdkCopyToClipboard] = "'tremollo.co/content/'+ temp(item.contentId)" mat-icon-button>
+                        <mat-icon class="text-secondary">
+                            share
+                        </mat-icon>
+                </button>
+                <!-- <td></td> -->
+            <!-- </tr>
+        </table> -->
+    </mat-card-content>
+</mat-card>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#e91e63" type = "ball-clip-rotate" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<div class="container" style="background-size: cover;background-repeat: repeat-y;" [ngStyle]="{backgroundImage:'url(assets/image/Carousel_mobile_background_2.png)'}">
+    <br>
+    <br>
+    <br>
+</div>

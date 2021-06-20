@@ -1,0 +1,32 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<div *ngIf="path != '/' && path != '' && path != '/login' && path != '/signup'" class="fixed-top">
+  <mat-toolbar class="bg-color-dark">
+      <!-- {{pages[pageNo].title}} -->
+      <!-- <img (click) = "revertback()" src="assets/image/logoo.png" height="25px" style="margin-left: 80%;"> -->
+      <mat-icon color="accent" style="margin-right: 15px;" (click)="sidenav.toggle()">menu</mat-icon>
+      <img src="assets/image/tremollo.svg" height="18px">
+  </mat-toolbar>
+</div>
+
+<mat-sidenav-container [hasBackdrop]="true">
+  <mat-sidenav #sidenav mode="push" position="start" [(opened)]="isSideNavOpened" style="background: #e91e63;">
+    <br><br><br>
+    <mat-action-list>
+        <button mat-list-item routerLink="/feedback" (click)="isSideNavOpened=false">Feedback</button>
+        <button mat-list-item routerLink="/about-us" (click)="isSideNavOpened=false">About us</button>
+        <button mat-list-item (click)="logout()">Log out</button>
+        <!-- <button mat-list-item >Rate us</button> -->
+
+    </mat-action-list>
+</mat-sidenav>
+  <mat-sidenav-content>
+      <router-outlet></router-outlet>
+      <div class="fixed-bottom">
+      <app-nav-bottom *ngIf="path != '/' && path != '' && path != '/login' && path != '/signup'" (page)="switchPage($event)"></app-nav-bottom>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,31 @@
+td{
+    padding-right: 15px;
+}
+
+p{
+    margin-bottom: 0px;
+}
+
+.input{
+    width: 70vw;
+}
+
+mat-expansion-panel-header{
+    height: fit-content !important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.poster{
+    width: 45px !important;
+    height: 30px !important;
+    border-radius: 0px !important;
+}
+
+.item {
+    padding: 16px;
+    background: #1e1e1e;
+    margin-left: -16px;
+    margin-right: -16px;
+}
+

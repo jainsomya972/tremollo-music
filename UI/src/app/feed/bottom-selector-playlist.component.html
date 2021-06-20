@@ -1,0 +1,18 @@
+<h2>Save to Playlist</h2>
+<mat-nav-list>
+  <span mat-list-item>
+  <span mat-line>
+<mat-form-field  style="width: 70vw; font-size: 20px;" class="input">
+  <mat-label>Create Playlist</mat-label>
+  <input matInput type="text" placeholder="Playlist Name" #name/>
+</mat-form-field>&nbsp;&nbsp;&nbsp;
+<button mat-mini-fab color="primary" (click)="createPlaylist(name.value)">
+  <mat-icon>check</mat-icon>
+</button>
+</span>
+</span>
+  <a  *ngFor="let item of playlists" mat-list-item (click)="addContent(item.playlistId)">
+    <mat-icon>view_headline</mat-icon><span mat-line>{{item.name}}</span>
+  </a>
+</mat-nav-list>
+  <br><br><br>
